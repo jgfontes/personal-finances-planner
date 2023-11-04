@@ -8,19 +8,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CreateExpenseFormComponent } from './create-expense-form/create-expense-form.component';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { AppRoutingModule } from './app-routing.module';
+import { ListExpensesComponent } from './list-expenses/list-expenses.component';
+import { SingleExpenseComponent } from './single-expense/single-expense.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     FooterComponent,
-    CreateExpenseFormComponent
+    CreateExpenseFormComponent,
+    ListExpensesComponent,
+    SingleExpenseComponent
   ],
   imports: [
     BrowserModule, 
     FormsModule,
     NgxMaskDirective,
-    NgxMaskPipe],
+    NgxMaskPipe,
+    AppRoutingModule],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
