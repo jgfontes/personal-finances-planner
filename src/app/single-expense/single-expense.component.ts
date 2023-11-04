@@ -7,6 +7,9 @@ import { Expense } from '../model/expense';
   styleUrls: ['./single-expense.component.css']
 })
 export class SingleExpenseComponent {
+handleMouseClick() {
+  console.log("ELEMENTO CLICADO");
+}
  // Defining colors dictionary for the badge
  colorDictionary: { [cat: string]: string; } = 
  {
@@ -19,7 +22,7 @@ export class SingleExpenseComponent {
    "Others" : "purple accent-1"
  };
  monthName: string[] = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"];
- @Input() expense: Expense = new Expense('', '', 0);
+ @Input() expense: Expense = new Expense('', '', 0, new Date(1998, 10, 20));
 
   dateString = 
     this.expense.date.getDay() + ' ' +

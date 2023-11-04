@@ -1,20 +1,11 @@
-
-<nav>
-    <div class="nav-wrapper teal lighten-4">
-      <!-- <a href="/assets/logo-no-background.png" class="brand-logo black-text">Logo</a> -->
-      <img alt="Logo" src="/assets/logo-no-background.png" width="200" height="60">
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class = "black-text" href="sass.html">Home</a></li>
-        <li><a class = "black-text" href="badges.html">About Me</a></li>
-        <li><a class = "black-text" href="collapsible.html">Contact</a></li>
-      </ul>
+<div class="teal lighten-5 NavContent" style="width: 100%; height: 95px; padding-left: 160px; padding-right: 160px; padding-top: 20px; padding-bottom: 20px; justify-content: space-between; align-items: center; display: inline-flex">
+  <div class="LogoNoBackground2" style="width: 200px; height: 55px; justify-content: center; align-items: center; display: flex">
+    <img routerLink="/list-expenses" class="LogoNoBackground1" style="width: 200px; height: 55px" src="/assets/logo-no-background.png" />
+  </div>
+  <div class="LeftContent" style="justify-content: flex-start; align-items: center; gap: 32px; display: flex">
+    <div class="Divider" style="width: 2px; height: 40px; position: relative; background: #E6E8EC; border-radius: 2px"></div>
+    <div routerLink="/list-expenses" class="Home" style="text-align: center; color: #777E90; font-size: 16px; font-family: DM Sans; font-weight: 700; line-height: 16px; word-wrap: break-word">Home</div>
+     <div routerLink="/about-me" style="text-align: center; color: #777E90; font-size: 16px; font-family: DM Sans; font-weight: 700; line-height: 16px; word-wrap: break-word">About Us</div>
+    <div class="Divider" style="width: 2px; height: 40px; position: relative; background: #E6E8EC; border-radius: 2px"></div>
     </div>
-</nav>
-
-<ul class="sidenav" id="mobile-demo" #mobile>
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
-</ul>
+</div>

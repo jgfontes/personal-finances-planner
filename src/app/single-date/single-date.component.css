@@ -1,0 +1,20 @@
+.custom-container {
+    width: 1111px;
+    height: 38px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .custom-content {
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 255, 0, 0.15);
+    padding-left: 15px;
+    color: black;
+    font-size: 24px;
+    font-family: Philosopher;
+    font-weight: 400;
+    white-space: nowrap; /* Use white-space to prevent line breaks */
+  }
+  

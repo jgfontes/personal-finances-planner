@@ -1,9 +1,8 @@
 export class Expense {
-    date: Date;
-    constructor(public name: string, public category: string, public value: number) {
+    constructor(public name: string, public category: string, public value: number, public date: Date) {
         this.name = name;
         this.category = category;
-        this.date = new Date;
+        this.date = date;
         this.value = value;
     }
 }

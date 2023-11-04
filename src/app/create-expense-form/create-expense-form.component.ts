@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Expense } from '../model/expense';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-expense-form',
@@ -16,11 +17,23 @@ export class CreateExpenseFormComponent {
   saveSucceeded:boolean = true;
   deleteSucceeded:boolean = false;
   warningIcon?:string;
+  // Defining edit/create Params
+  editMode: boolean = false;
+  editExpenseName: string = '';
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void{
-    this.expense = new Expense('', '', 0);
+    this.expense = new Expense('', '', 0, new Date(1998, 10, 20));
+    this.route.queryParams.subscribe((params) => {
+      if(params['edit'] === "true") {
+        console.log('Entering edit mode');
+        this.editMode = true;
+        this.editExpenseName = params['name'];
+      }
+    })
+    console.log(this.editExpenseName);
+
   }
 
   onButtonSaveClick() {

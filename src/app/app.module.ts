@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -11,6 +10,9 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { ListExpensesComponent } from './list-expenses/list-expenses.component';
 import { SingleExpenseComponent } from './single-expense/single-expense.component';
+import { SingleDateComponent } from './single-date/single-date.component';
+import { RouterModule } from '@angular/router';
+import { AboutMeComponent } from './about-me/about-me.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,17 @@ import { SingleExpenseComponent } from './single-expense/single-expense.componen
     FooterComponent,
     CreateExpenseFormComponent,
     ListExpensesComponent,
-    SingleExpenseComponent
+    SingleExpenseComponent,
+    SingleDateComponent,
+    AboutMeComponent
   ],
   imports: [
     BrowserModule, 
     FormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
-    AppRoutingModule],
+    AppRoutingModule,
+    RouterModule],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })

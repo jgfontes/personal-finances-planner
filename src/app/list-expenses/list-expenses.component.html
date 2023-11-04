@@ -1,1 +1,21 @@
+<div class="SubtitleComponent">
+  <div class="RecentExpenses">Recent expenses</div>
+  <a routerLink="/new-expense" class="AddNewExpense waves-effect waves-light black-text btn">Add new expense</a>
+</div>
+
+<app-single-date [dateText]="dateString" ></app-single-date>
+<br>
+<br>
 <app-single-expense [expense]="expense"></app-single-expense>
+
+<!-- <div class="SubtitleComponent">
+  <div class="CenteredContent">
+    <div class="RecentExpenses">Recent expenses</div>
+    <a routerLink="/new-expense" class="waves-effect waves-light black-text btn">Add new expense</a>
+  </div>
+</div>
+
+<app-single-date [dateText]="dateString"></app-single-date>
+<br>
+<br>
+<app-single-expense [expense]="expense"></app-single-expense> -->
