@@ -6,6 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CreateExpenseFormComponent } from './create-expense-form/create-expense-form.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { ListExpensesComponent } from './list-expenses/list-expenses.component';
@@ -31,7 +32,8 @@ import { AboutMeComponent } from './about-me/about-me.component';
     NgxMaskDirective,
     NgxMaskPipe,
     AppRoutingModule,
-    RouterModule],
+    RouterModule,
+    HttpClientModule],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })

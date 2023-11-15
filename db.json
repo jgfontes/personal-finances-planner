@@ -1,0 +1,60 @@
+{
+  "expenses": [
+    {
+      "id": 1,
+      "name": "Hospital expense",
+      "value": 500,
+      "category": "Health",
+      "date": "2023-11-23"
+    },
+    {
+      "id": 2,
+      "name": "Fuel expense",
+      "value": 300,
+      "category": "Fuel",
+      "date": "2023-11-23"
+    },
+    {
+      "id": 5,
+      "name": "Coke",
+      "value": 300,
+      "category": "Others",
+      "date": "2023-11-29"
+    },
+    {
+      "name": "MC Donalds Dinner",
+      "category": "Food",
+      "value": 50,
+      "date": "2023-11-01",
+      "id": 6
+    },
+    {
+      "name": "Burger King Lunch",
+      "category": "Bill",
+      "value": 80,
+      "date": "2023-11-02",
+      "id": 12
+    },
+    {
+      "name": "aaa",
+      "category": "Salary",
+      "value": 700,
+      "date": "2023-11-18",
+      "id": 15
+    },
+    {
+      "name": "Dog Food",
+      "category": "Others",
+      "value": 200,
+      "date": "2023-10-03",
+      "id": 16
+    },
+    {
+      "name": "Cat food",
+      "category": "Hobby",
+      "value": 20,
+      "date": "2023-10-03",
+      "id": 25
+    }
+  ]
+}

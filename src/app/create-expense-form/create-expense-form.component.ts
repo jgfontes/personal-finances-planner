@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Expense } from '../model/expense';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ExpenseService } from '../expense-service.service';
 
 @Component({
   selector: 'app-create-expense-form',
@@ -45,10 +46,10 @@ export class CreateExpenseFormComponent {
   editMode: boolean = false;
   editExpenseName: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private expenseService: ExpenseService) {}
 
   ngOnInit(): void{
-    this.expense = new Expense('', '', 0, new Date(1998, 10, 20));
+    this.expense = new Expense('', '', 0, new Date);
     this.route.queryParams.subscribe((params) => {
       if(params['edit'] === "true") {
         console.log('Entering edit mode');
@@ -72,6 +73,7 @@ export class CreateExpenseFormComponent {
       this.saveSucceeded = true;
       this.deleteSucceeded = false;
       this.warningIcon = "check_circle"
+      this.expenseService.save(this.expense);
   }
 
   onButtonDeleteClick() {
