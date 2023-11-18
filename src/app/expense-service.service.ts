@@ -17,52 +17,22 @@ export class ExpenseService {
     this.expensesDB = this.webstorageUtils.get();
   }
 
-  async getAll(): Promise<Expense[]> {
-    try {
-      const expenses = await this.promiseApiService.getAll();
-      console.log("Promise API Service GET ALL: Success");
-      this.expensesDB = expenses;
-      return expenses;
-    } catch (error) {
-      console.log("Promise API Service GET ALL: FAILED");
-      console.error(error); // Log the error for debugging
-      return this.expensesDB;
-    }
+  getAll(): Observable<Expense[]> {
+    return this.promiseApiService.getAll();
   }
 
-  async save(expense: Expense) {
-    try {
-      await this.promiseApiService.save(expense);
-      console.log("Promise API Service: Expense saved successfully")
-    } catch(error) { 
-      console.log("Promise API Service FAILED")
-      let storedExpenses = this.webstorageUtils.get();
-      this.webstorageUtils.get().push(expense);
-      this.webstorageUtils.set(storedExpenses);
-      this.expensesDB = storedExpenses;
-    }
-  }
-
-  update(expense: Expense) {
-    // TO DO -> Implement Promise API Services Here
-    for (let i = 0; i < this.expensesDB.length; i++) {
-      if(expense.id == this.expensesDB[i].id) {
-        this.expensesDB[i].name = expense.name;
-        this.expensesDB[i].category = expense.category;
-        this.expensesDB[i].value = expense.value;
-        this.expensesDB[i].date = expense.date;
-      }
-    }
-    this.webstorageUtils.set(this.expensesDB);
+  save(expense: Expense) {
+    return this.promiseApiService.save(expense);
   }
 
   delete(expense: Expense) {
-    // TO DO -> Implement Promise API Services Here
-    for (let i = 0; i < this.expensesDB.length; i++) {
-      if(expense.id == this.expensesDB[i].id) {
-        this.expensesDB.splice(1, i);
-      }
-    }
-    this.webstorageUtils.set(this.expensesDB);
+    const expenses = this.promiseApiService.deleteById(expense.id as unknown as string);
+    console.log("Promise API Service DELETE: Success");
+    console.log(expense);
+    return expenses;
+  }
+
+  update(expense: Expense) {
+    return this.promiseApiService.update(expense);
   }
 }

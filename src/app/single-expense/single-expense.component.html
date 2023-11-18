@@ -1,4 +1,4 @@
-<div [routerLink]="['/new-expense']" [queryParams]="{edit:true, name:this.expense.name}" style="width: 1110px; height: 96px; position: relative">
+<div [routerLink]="['/new-expense']" [queryParams]="this.queryParams" style="width: 1110px; height: 96px; position: relative">
     <div style="width: 1110px; height: 96px; left: 0px; top: 0px; position: absolute; background: #EBEBEB"></div>
     <div style="width: 169px; height: 32px; left: 12px; top: 14px; position: absolute; text-align: center; color: black; font-size: 24px; font-family: Philosopher; font-weight: 400; word-wrap: break-word">
         {{ this.expense.name }}
@@ -11,6 +11,6 @@
     </div>
     </div>
     <div style="width: 172px; height: 34px; left: 910px; top: 30px; position: absolute; text-align: center; color: #FF0000; font-size: 32px; font-family: Philosopher; font-weight: 400; word-wrap: break-word"> 
-        {{ this.expense.value }}    
+        {{ this.expense.value | currency:'BRL' }}    
     </div>
   </div>

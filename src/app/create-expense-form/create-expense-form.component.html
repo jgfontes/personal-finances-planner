@@ -50,17 +50,6 @@
             </div>
         </div>
 
-        <!-- <div class="collection">
-            <label for="expenseValue">Expense Category</label>
-            <a href="#!" class="collection-item"><span class="black-text light-blue badge">Tag example</span>Salary</a>
-            <a href="#!" class="collection-item"><span class="black-text light-green accent-3 badge">Tag example</span>Health</a>
-            <a href="#!" class="collection-item"><span class="black-text yellow accent-2 badge">Tag example</span>Food</a>
-            <a href="#!" class="collection-item"><span class="black-text cyan accent-2 badge">Tag example</span>Hobby</a>
-            <a href="#!" class="collection-item"><span class="black-text red accent-2 badge">Tag example</span>Bill</a>
-            <a href="#!" class="collection-item"><span class="black-text red badge">Tag example</span>Fuel</a>
-            <a href="#!" class="collection-item"><span class="black-text purple accent-1 badge">Tag example</span>Others</a>
-        </div> -->
-
         <div class="input-field col s12">
             <label for="expenseValue">Expense Value</label>
             <input type="text" id="eValue" name="expenseValue"
@@ -91,16 +80,26 @@
             </div>
         </div>
 
-        <button 
+        <!-- Disable the button on edit mode -->
+        <button *ngIf="!this.editMode"
             class ="waves-effect waves-light green lighten-1 btn"
             type="submit" 
             [disabled]="!form.valid"
             value="Save">Save</button>
-        <!-- <div>
+        
+        <!-- Only enabled on edit mode -->
+        <div *ngIf="this.editMode">
+            <a class ="waves-effect waves-light green lighten-1 btn"
+            (click)="this.onButtonUpdateClick();" 
+            [hidden]="true">Update</a>
+        </div>
+
+        <!-- Only enabled on edit mode -->
+        <div *ngIf="this.editMode">
             <a class ="waves-effect red btn"
             (click)="this.onButtonDeleteClick();" 
             [hidden]="true">Delete</a>
-        </div> -->
+        </div>
 
         </div>
     </form>

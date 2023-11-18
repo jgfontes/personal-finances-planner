@@ -1,60 +1,25 @@
 {
   "expenses": [
     {
-      "id": 1,
-      "name": "Hospital expense",
-      "value": 500,
-      "category": "Health",
-      "date": "2023-11-23"
-    },
-    {
-      "id": 2,
-      "name": "Fuel expense",
-      "value": 300,
-      "category": "Fuel",
-      "date": "2023-11-23"
-    },
-    {
-      "id": 5,
-      "name": "Coke",
-      "value": 300,
-      "category": "Others",
-      "date": "2023-11-29"
-    },
-    {
-      "name": "MC Donalds Dinner",
+      "name": "Nomad Burger 3",
       "category": "Food",
-      "value": 50,
-      "date": "2023-11-01",
-      "id": 6
-    },
-    {
-      "name": "Burger King Lunch",
-      "category": "Bill",
-      "value": 80,
-      "date": "2023-11-02",
-      "id": 12
-    },
-    {
-      "name": "aaa",
-      "category": "Salary",
-      "value": 700,
-      "date": "2023-11-18",
+      "value": 25,
+      "date": "2023-11-29",
       "id": 15
     },
     {
-      "name": "Dog Food",
+      "name": "Random expense",
       "category": "Others",
-      "value": 200,
-      "date": "2023-10-03",
-      "id": 16
+      "value": 800,
+      "date": "2023-11-29",
+      "id": 32
     },
     {
-      "name": "Cat food",
-      "category": "Hobby",
-      "value": 20,
-      "date": "2023-10-03",
-      "id": 25
+      "name": "Nomad Burger 2",
+      "category": "Food",
+      "value": 25,
+      "date": "2023-11-29",
+      "id": 34
     }
   ]
 }

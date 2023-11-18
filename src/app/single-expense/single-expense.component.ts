@@ -23,9 +23,14 @@ handleMouseClick() {
  };
  monthName: string[] = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"];
  @Input() expense: Expense = new Expense('', '', 0, new Date(1998, 10, 20));
+ queryParams = { edit: true, expense: JSON.stringify(this.expense) };
 
   dateString = 
     this.expense.date.getDay() + ' ' +
     this.monthName[this.expense.date.getMonth()] + ' ' +
     this.expense.date.getFullYear() ;
-}
+
+    ngOnInit()
+  {
+    this.queryParams = { edit: true, expense: JSON.stringify(this.expense) };
+  }}

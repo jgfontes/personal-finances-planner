@@ -3,6 +3,7 @@ import { Expense } from '../model/expense';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ExpenseService } from '../expense-service.service';
+import { WarningMessage } from '../model/warningMessage';
 
 @Component({
   selector: 'app-create-expense-form',
@@ -44,48 +45,72 @@ export class CreateExpenseFormComponent {
   warningIcon?:string;
   // Defining edit/create Params
   editMode: boolean = false;
-  editExpenseName: string = '';
 
   constructor(private route: ActivatedRoute, private router: Router, private expenseService: ExpenseService) {}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.expense = new Expense('', '', 0, new Date);
     this.route.queryParams.subscribe((params) => {
+
+      // Edit Mode
       if(params['edit'] === "true") {
         console.log('Entering edit mode');
         this.editMode = true;
-        this.editExpenseName = params['name'];
-      }
+        this.expense =JSON.parse(params['expense']) as Expense;
+      } 
     })
-    console.log(this.editExpenseName);
-
   }
 
   // Save Button
   onSubmit() {
-    alert(`Saving Expense Name = ${this.expense.name}
-      Saving Expense Value = ${this.expense.value}
-      Expense Category = ${this.expense.category}
-      Expense Date = ${this.expense.date}
-      `);
-      this.warningMessage = `Expense ${this.expense.name} Saved !`;
-      this.warningSubMessage = "Test!"
-      this.saveSucceeded = true;
-      this.deleteSucceeded = false;
-      this.warningIcon = "check_circle"
-      this.expenseService.save(this.expense);
+    this.expenseService.save(this.expense).subscribe({
+      next: (data: Expense) => {
+      },
+      error: (error) => {
+        console.log(error);
+        alert("Error saving expense: " + error.warningMessage);
+      },
+      complete: () => {
+        let warning = JSON.stringify(new WarningMessage(true, this.expense.name, true));
+        this.router.navigate(['/list-expenses'], {
+          queryParams: {message: warning}
+        });
+      }}
+    );
   }
 
   onButtonDeleteClick() {
-    alert(`Deleting Expense Name = ${this.expense.name}
-      Deleting Expense Value = ${this.expense.value}`);
-      this.warningMessage = ` Expense ${this.expense.name} Deleted !`;
-      this.warningSubMessage = "Test!"
-      this.deleteSucceeded = true;
-      this.saveSucceeded = false;
-      this.warningIcon = "report";
+    this.expenseService.delete(this.expense).subscribe({
+      next: (data: Expense) => {},
+      error: (error) => {
+        console.log("Error deleting expense: " + error);
+        alert(error.warningMessage);
+      },
+      complete: () => {
+        let warning = JSON.stringify(new WarningMessage(false, this.expense.name, true));
+        this.router.navigate(['/list-expenses'], {
+          queryParams: {message: warning}
+        });
+      }});
+  
   }
 
+  onButtonUpdateClick() {
+    this.expenseService.update(this.expense).subscribe({
+      next: (data: Expense) => {
+      },
+      error: (error) => {
+        console.log("Error updating expense: " + error);
+        alert(error.warningMessage);
+      },
+      complete: () => {
+        let warning = JSON.stringify(new WarningMessage(true, this.expense.name, true));
+        this.router.navigate(['/list-expenses'], {
+          queryParams: {message: warning}
+        });
+      }
+    })
+  }
 
   ngAfterViewInit() {
     // Initialize Materialize Select
