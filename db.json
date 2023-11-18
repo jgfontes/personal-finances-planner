@@ -1,25 +1,25 @@
 {
   "expenses": [
     {
-      "name": "Nomad Burger 3",
+      "name": "Nomad Burger",
       "category": "Food",
       "value": 25,
       "date": "2023-11-29",
       "id": 15
     },
     {
-      "name": "Random expense",
-      "category": "Others",
-      "value": 800,
-      "date": "2023-11-29",
-      "id": 32
-    },
-    {
-      "name": "Nomad Burger 2",
+      "name": "MC Donalds",
       "category": "Food",
       "value": 25,
       "date": "2023-11-29",
       "id": 34
+    },
+    {
+      "name": "Gasoline",
+      "category": "Fuel",
+      "value": 200,
+      "date": "2023-11-13",
+      "id": 12
     }
   ]
 }
