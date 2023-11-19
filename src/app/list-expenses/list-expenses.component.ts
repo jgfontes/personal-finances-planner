@@ -4,6 +4,7 @@ import { ExpenseService } from '../expense-service.service';
 import { GroupedExpenses } from '../model/groupedExpenses';
 import { WarningMessage } from '../model/warningMessage';
 import { ActivatedRoute } from '@angular/router';
+import { WebStorageUtil } from '../web-storage-util';
 
 @Component({
   selector: 'app-list-expenses',
@@ -17,6 +18,7 @@ export class ListExpensesComponent {
   // Try
   expenseMap: GroupedExpenses = {};
   dateArray!: string[];
+  webstorageUtils: WebStorageUtil = new WebStorageUtil;
 
   monthName: string[] = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"];
   dateString = "";
@@ -40,17 +42,25 @@ export class ListExpensesComponent {
       }
     })
 
-    this.expenseService.getAll().subscribe(
-      (data: Expense[]) => {
-        if(!data || data.length == 0) {
-          alert("No result was found!");
-          return;
+      this.expenseService.getAll().subscribe(
+        (data: Expense[]) => {
+          if(!data || data.length == 0) {
+            alert("No result was found!");
+            return;
+          }
+          let notSortedExpenses = data;
+          this.expenseMap = this.sortExpenses(notSortedExpenses);
+          this.dateArray = Object.keys(this.expenseMap);
+        },
+
+        err => {
+          // this.webstorageUtils.populateExpenses();
+          console.log("Exception");
+          let notSortedExpenses = this.webstorageUtils.get();
+          this.expenseMap = this.sortExpenses(notSortedExpenses);
+          this.dateArray = Object.keys(this.expenseMap);
         }
-        let notSortedExpenses = data;
-        this.expenseMap = this.sortExpenses(notSortedExpenses);
-        this.dateArray = Object.keys(this.expenseMap);
-      }
-    )
+      )
   }
 
   convertDateToString(date: Date) {

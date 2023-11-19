@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ExpenseService } from '../expense-service.service';
 import { WarningMessage } from '../model/warningMessage';
+import { WebStorageUtil } from '../web-storage-util';
 
 @Component({
   selector: 'app-create-expense-form',
@@ -45,6 +46,7 @@ export class CreateExpenseFormComponent {
   warningIcon?:string;
   // Defining edit/create Params
   editMode: boolean = false;
+  webstorageUtils: WebStorageUtil = new WebStorageUtil;
 
   constructor(private route: ActivatedRoute, private router: Router, private expenseService: ExpenseService) {}
 
@@ -67,8 +69,12 @@ export class CreateExpenseFormComponent {
       next: (data: Expense) => {
       },
       error: (error) => {
-        console.log(error);
-        alert("Error saving expense: " + error.warningMessage);
+        console.log("Exception");
+        let storageExpenses = this.webstorageUtils.get();
+        storageExpenses.push(this.expense);
+        this.webstorageUtils.set(storageExpenses);
+        this.router.navigate(['/list-expenses'], {
+        });
       },
       complete: () => {
         let warning = JSON.stringify(new WarningMessage(true, this.expense.name, true));
@@ -83,8 +89,10 @@ export class CreateExpenseFormComponent {
     this.expenseService.delete(this.expense).subscribe({
       next: (data: Expense) => {},
       error: (error) => {
-        console.log("Error deleting expense: " + error);
-        alert(error.warningMessage);
+        console.log("Exception");
+        let storageExpenses = this.webstorageUtils.delete(this.expense);
+        this.router.navigate(['/list-expenses'], {
+        });
       },
       complete: () => {
         let warning = JSON.stringify(new WarningMessage(false, this.expense.name, true));
@@ -100,8 +108,10 @@ export class CreateExpenseFormComponent {
       next: (data: Expense) => {
       },
       error: (error) => {
-        console.log("Error updating expense: " + error);
-        alert(error.warningMessage);
+        console.log("Exception");
+        let storageExpenses = this.webstorageUtils.update(this.expense);
+        this.router.navigate(['/list-expenses'], {
+        });
       },
       complete: () => {
         let warning = JSON.stringify(new WarningMessage(true, this.expense.name, true));

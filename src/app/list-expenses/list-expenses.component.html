@@ -1,5 +1,4 @@
-<div class="
-  alert card white-text"
+<div class="alert card white-text"
   [class.green]="this.warningMessage.saveOrUpdate"
   [class.red]="!this.warningMessage.saveOrUpdate"
   [hidden]="!this.warningMessage.showWarning">
@@ -14,9 +13,11 @@
   </div>
 </div>
 
-<div class="SubtitleComponent">
-  <div class="RecentExpenses">Recent expenses</div>
-  <a routerLink="/new-expense" class="AddNewExpense waves-effect waves-light black-text btn">Add new expense</a>
+<div class="ParentSubtitleComponent">
+  <div class="SubtitleComponent">
+    <div class="RecentExpenses">Recent expenses</div>
+    <a routerLink="/new-expense" class="AddNewExpense waves-effect waves-light black-text btn">Add new expense</a>
+  </div>
 </div>
 
 <div *ngFor="let date of dateArray">

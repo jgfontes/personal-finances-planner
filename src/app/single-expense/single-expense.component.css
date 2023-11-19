@@ -1,0 +1,82 @@
+.expense-container {
+    width: auto;
+    height: 96px;
+    position: relative;
+}
+
+.background {
+    width: 1000px;
+    height: 96px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    background: #EBEBEB;
+}
+
+.name {
+    width: 500px;
+    height: 32px;
+    left: 15px;
+    top: 14px;
+    position: relative;
+    text-align: left;
+    color: black;
+    font-size: 24px;
+    font-family: Philosopher;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.category {
+    width: 202px;
+    height: 36px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    left: 10px;
+    top: 20px;
+    position: relative;
+    border-radius: 12px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+}
+
+.category-text {
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    font-family: Philosopher;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.value {
+    width: 172px;
+    height: 34px;
+    left: 820px;
+    top: -40px;
+    position: relative;
+    text-align: center;
+    color: red; /* Alterado para vermelho */
+    font-size: 32px;
+    font-family: Philosopher;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+
+@media (max-width: 1050px) {
+    .background {
+        width: 90%;
+    }
+
+    .value{
+        left: 70%;
+    }
+}

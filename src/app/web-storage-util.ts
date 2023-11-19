@@ -26,4 +26,29 @@ export class WebStorageUtil {
         this.expensesDB = expenses;
         localStorage.setItem(this.EXPENSES_KEY, JSON.stringify(expenses));
     }
+
+    delete(expense: Expense) {
+        let storedExpenses = this.get();
+
+        for(let i = 0; i < storedExpenses.length; i++) {
+            if(JSON.stringify(expense) == JSON.stringify(this.expensesDB[i])) {
+                storedExpenses.splice(i);
+            }
+        }    
+        localStorage.setItem(this.EXPENSES_KEY, JSON.stringify(storedExpenses));
+    }
+
+    update(expense: Expense) {
+        console.log("Entering update mode");
+        let storedExpenses = this.get();
+
+        for(let i = 0; i < storedExpenses.length; i++) {
+            if(expense.id === storedExpenses[i].id) {
+                console.log("Entered in the loop")
+                storedExpenses[i] = expense;
+                break;
+            }
+        }    
+        localStorage.setItem(this.EXPENSES_KEY, JSON.stringify(storedExpenses));
+    }
 }

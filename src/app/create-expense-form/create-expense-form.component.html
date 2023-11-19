@@ -1,106 +1,108 @@
-<div class="row">
-    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
-        <div class="
-            alert card white-text"
-            [class.green]="this.saveSucceeded"
-            [class.red]="this.deleteSucceeded"
-            [hidden]="!this.warningMessage">
-            <div class="card-content">
-                <p><i class="material-icons">
-                    {{ this.warningIcon }}
-                </i><span>
-                    {{ this.warningMessage}}
-                </span> 
-                    {{ this.warningSubMessage }}
-                </p>
+<div class="all">
+    <div class="row">
+        <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+            <div class="
+                alert card white-text"
+                [class.green]="this.saveSucceeded"
+                [class.red]="this.deleteSucceeded"
+                [hidden]="!this.warningMessage">
+                <div class="card-content">
+                    <p><i class="material-icons">
+                        {{ this.warningIcon }}
+                    </i><span>
+                        {{ this.warningMessage}}
+                    </span> 
+                        {{ this.warningSubMessage }}
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-            <label for="expenseName">Expense Name</label>
-            <input 
-                    type="text" 
-                    id="e-name" 
-                    name="expenseName"
-                    [(ngModel)]="this.expense.name"      
-                    pattern=".*[a-zA-Z]{3}.*"
-                    #name="ngModel"
-                    required>
-            <div class="red-text" [hidden]="name.valid || name.untouched" >
-                Expense name must have more than 3 letters
+            <div class="row">
+                <div class="input-field col s12">
+                <label for="expenseName">Expense Name</label>
+                <input 
+                        type="text" 
+                        id="e-name" 
+                        name="expenseName"
+                        [(ngModel)]="this.expense.name"      
+                        pattern=".*[a-zA-Z]{3}.*"
+                        #name="ngModel"
+                        required>
+                <div class="red-text" [hidden]="name.valid || name.untouched" >
+                    Expense name must have more than 3 letters
+                </div>
             </div>
-        </div>
-            
-        <div class="row">
-            <div class="input-field col s12">
-                <select 
-                    id="select-category"
-                    name="select-category"
-                    [(ngModel)] = "expense.category"
-                    #category="ngModel"
-                    #categorySelect
-                    required>
-                    <option [value]="" disabled>Choose an category</option>
-                    <option *ngFor="let c of categories;" [value]="c">
-                        <span class="black-text {{this.colorsCategoryMap.get(c)}} badge"></span> {{ c }}
-                    </option>
-                </select>
-                <label>Materialize Multiple Select</label>
+                
+            <div class="row">
+                <div class="input-field col s12">
+                    <select 
+                        id="select-category"
+                        name="select-category"
+                        [(ngModel)] = "expense.category"
+                        #category="ngModel"
+                        #categorySelect
+                        required>
+                        <option [value]="" disabled>Choose an category</option>
+                        <option *ngFor="let c of categories;" [value]="c">
+                            <span class="black-text {{this.colorsCategoryMap.get(c)}} badge"></span> {{ c }}
+                        </option>
+                    </select>
+                    <label>Materialize Multiple Select</label>
+                </div>
             </div>
-        </div>
 
-        <div class="input-field col s12">
-            <label for="expenseValue">Expense Value</label>
-            <input type="text" id="eValue" name="expenseValue"
-            [(ngModel)]="this.expense.value"
-            pattern=".*[1-9]{1}.*"
-            #value="ngModel"
-            mask="separator.2"
-            [thousandSeparator]="'.'"
-            [decimalMarker]="','"
-            prefix="R$ "
-            [dropSpecialCharacters]="true"
-            [showMaskTyped]="false"
-            required>
-            <div class="red-text" [hidden]="value.valid || value.untouched" >
-                Expense value cannot be empty or zero
-            </div>
-        </div>
-
-        <div class="row">
             <div class="input-field col s12">
-            <label for="expenseDate">Expense Date</label>
-            <input 
-                type="date"
-                [(ngModel)]="this.expense.date" 
-                id="e-date" 
-                name="expenseDate"
+                <label for="expenseValue">Expense Value</label>
+                <input type="text" id="eValue" name="expenseValue"
+                [(ngModel)]="this.expense.value"
+                pattern=".*[1-9]{1}.*"
+                #value="ngModel"
+                mask="separator.2"
+                [thousandSeparator]="'.'"
+                [decimalMarker]="','"
+                prefix="R$ "
+                [dropSpecialCharacters]="true"
+                [showMaskTyped]="false"
                 required>
+                <div class="red-text" [hidden]="value.valid || value.untouched" >
+                    Expense value cannot be empty or zero
+                </div>
             </div>
-        </div>
 
-        <!-- Disable the button on edit mode -->
-        <button *ngIf="!this.editMode"
-            class ="waves-effect waves-light green lighten-1 btn"
-            type="submit" 
-            [disabled]="!form.valid"
-            value="Save">Save</button>
-        
-        <!-- Only enabled on edit mode -->
-        <div *ngIf="this.editMode">
-            <a class ="waves-effect waves-light green lighten-1 btn"
-            (click)="this.onButtonUpdateClick();" 
-            [hidden]="true">Update</a>
-        </div>
+            <div class="row">
+                <div class="input-field col s12">
+                <label for="expenseDate">Expense Date</label>
+                <input 
+                    type="date"
+                    [(ngModel)]="this.expense.date" 
+                    id="e-date" 
+                    name="expenseDate"
+                    required>
+                </div>
+            </div>
 
-        <!-- Only enabled on edit mode -->
-        <div *ngIf="this.editMode">
-            <a class ="waves-effect red btn"
-            (click)="this.onButtonDeleteClick();" 
-            [hidden]="true">Delete</a>
-        </div>
+            <!-- Disable the button on edit mode -->
+            <button *ngIf="!this.editMode"
+                class ="waves-effect waves-light green lighten-1 btn"
+                type="submit" 
+                [disabled]="!form.valid"
+                value="Save">Save</button>
+            
+            <!-- Only enabled on edit mode -->
+            <div *ngIf="this.editMode">
+                <a class ="waves-effect waves-light green lighten-1 btn"
+                (click)="this.onButtonUpdateClick();" 
+                [hidden]="true">Update</a>
+            </div>
 
-        </div>
-    </form>
+            <!-- Only enabled on edit mode -->
+            <div *ngIf="this.editMode">
+                <a class ="waves-effect red btn"
+                (click)="this.onButtonDeleteClick();" 
+                [hidden]="true">Delete</a>
+            </div>
+
+            </div>
+        </form>
+    </div>
 </div>
