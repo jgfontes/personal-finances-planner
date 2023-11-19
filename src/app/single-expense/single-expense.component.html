@@ -1,0 +1,17 @@
+<div [routerLink]="['/new-expense']" [queryParams]="this.queryParams" class="expense-container">
+  <div class="background">
+    <div class="name">
+        {{ this.expense.name }}
+    </div>
+
+    <div class="{{colorDictionary[this.expense.category]}} category">
+        <div class="category-text">
+            {{ this.expense.category }}
+        </div>
+    </div>
+
+    <div class="value">
+        {{ this.expense.value | currency:'BRL' }}    
+    </div>
+  </div>
+</div>

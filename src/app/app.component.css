@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+    padding: 0px !important;
+  }
+
+  .alert {
+    .card-content {
+      span {
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-right:4px;
+      }
+      .material-icons {
+        font-size: 1.5em;
+        position: relative;
+        top: 5px;
+        margin-right: 0.5em;
+      }	
+    }
+  }	

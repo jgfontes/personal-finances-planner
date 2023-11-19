@@ -1,0 +1,32 @@
+{
+  "expenses": [
+    {
+      "name": "MC Donalds",
+      "category": "Food",
+      "value": 25,
+      "date": "2023-11-29",
+      "id": 34
+    },
+    {
+      "name": "Lunch Mc Donald's",
+      "category": "Food",
+      "value": 10,
+      "date": "2023-11-13",
+      "id": 21
+    },
+    {
+      "name": "tet",
+      "category": "Health",
+      "value": 50,
+      "date": "2023-11-23",
+      "id": 35
+    },
+    {
+      "name": "nbb",
+      "category": "Health",
+      "value": 90,
+      "date": "2023-11-25",
+      "id": 36
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<div class="alert card white-text"
+  [class.green]="this.warningMessage.saveOrUpdate"
+  [class.red]="!this.warningMessage.saveOrUpdate"
+  [hidden]="!this.warningMessage.showWarning">
+  <div class="card-content">
+      <p><i class="material-icons">
+          {{ this.warningMessage.warningIcon }}
+      </i><span>
+          {{ this.warningMessage.message }}
+      </span> 
+          {{ this.warningMessage.subMessage }}
+      </p>
+  </div>
+</div>
+
+<div class="ParentSubtitleComponent">
+  <div class="SubtitleComponent">
+    <div class="RecentExpenses">Recent expenses</div>
+    <a routerLink="/new-expense" class="AddNewExpense waves-effect waves-light black-text btn">Add new expense</a>
+  </div>
+</div>
+
+<div *ngFor="let date of dateArray">
+  <br>
+  <app-single-date [dateText]="date"></app-single-date>
+  <br>
+  <br>
+  <div *ngFor="let expense of expenseMap[date]">
+    <app-single-expense [expense]="expense"></app-single-expense>
+  </div>
+</div>
